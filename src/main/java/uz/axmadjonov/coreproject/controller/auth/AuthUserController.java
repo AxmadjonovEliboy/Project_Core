@@ -1,37 +1,20 @@
 package uz.axmadjonov.coreproject.controller.auth;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import uz.axmadjonov.coreproject.controller.base.AbstractController;
 import uz.axmadjonov.coreproject.criteria.AuthCriteria;
 import uz.axmadjonov.coreproject.dto.auth.*;
-import uz.axmadjonov.coreproject.entity.auth.AuthUser;
 import uz.axmadjonov.coreproject.response.DataDto;
 import uz.axmadjonov.coreproject.service.auth.AuthUserService;
-import uz.axmadjonov.coreproject.utils.JwtUtils;
 import uz.axmadjonov.coreproject.utils.SecurityUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 /**
  * @author Axmadjonov Eliboy on Mon. 23:15. 04/07/22
