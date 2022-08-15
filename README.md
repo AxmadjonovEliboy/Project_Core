@@ -105,6 +105,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 </p>
 
 # Captcha configuration v1
+
+<img src="src/main/resources/static/img.png">
 <p>
 <dependency>
     <groupId>com.github.cage</groupId>
