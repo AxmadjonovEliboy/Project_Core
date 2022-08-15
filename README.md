@@ -108,11 +108,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 <img src="src/main/resources/static/img.png">
 <p>
-<dependency>
+Dependency: 
+  <dependency>
     <groupId>com.github.cage</groupId>
     <artifactId>cage</artifactId>
     <version>1.0</version>
-</dependency>
+  </dependency>
+
 </p>
 
 <h5>
