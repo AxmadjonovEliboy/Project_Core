@@ -103,3 +103,51 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 </p>
+
+# Captcha configuration v1
+<p>
+<dependency>
+    <groupId>com.github.cage</groupId>
+    <artifactId>cage</artifactId>
+    <version>1.0</version>
+</dependency>
+</p>
+
+<h5>
+public class Captcha {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "unique_id")
+    private String uniqueId;
+    private String token;
+}
+</h5>
+
+<h4>
+  @GetMapping(value = "/get")
+    public void get(@RequestParam("uniqueId") String uniqueId, HttpServletResponse resp) throws IOException {
+
+        GCage gCage = new GCage();
+        resp.setContentType("image/" + gCage.getFormat());
+        resp.setHeader("Cache-Control", "no-cache");
+        resp.setDateHeader("Expires", 0);
+        resp.setHeader("Progma", "no-cache");
+        resp.setDateHeader("Max-Age", 0);
+
+        String token = gCage.getTokenGenerator().next().substring(0, 7);
+        Captcha captcha = repository.getByUniqueId(uniqueId).orElse(new Captcha());
+        captcha.setUniqueId(uniqueId);
+        captcha.setToken(token);
+        repository.save(captcha);
+        gCage.draw(token, resp.getOutputStream());
+
+    }
+
+</h4>
+
+
+
+
